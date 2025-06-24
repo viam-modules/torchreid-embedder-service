@@ -1,0 +1,6 @@
+torch==2.5
+numpy<2.0.0
+torchvision
+pytest
+pytest-asyncio
+viam-sdk==0.48.0
