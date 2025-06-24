@@ -2,20 +2,18 @@ import asyncio
 
 import numpy as np
 from PIL import Image
-from viam.components.camera import Camera
 from viam.robot.client import RobotClient
 from viam.services.mlmodel import MLModelClient
-from viam.services.vision import VisionClient
 
 IMG_PATH = "./src/test/alex/alex_2.jpeg"
 
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        api_key="s4byutclmniiqa5dzok21oftvlw3bcab",
-        api_key_id="e74075f5-9193-489f-89b0-d1a951092f89",
+        api_key="xxxxxxxxx",
+        api_key_id="xxxxxxxxx",
     )
-    return await RobotClient.at_address("mac-server-main.wszwqu7wcv.viam.cloud", opts)
+    return await RobotClient.at_address("xxxxxxxxx", opts)
 
 
 async def main():
