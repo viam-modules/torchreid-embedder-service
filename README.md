@@ -2,6 +2,19 @@
 An person embedder for features based person tracking
 
 
+## Run test
+
+```bash
+make setup #or make setup-jp6 on jetson machines
+source build/.venv/bin/activate
+export PYTHONPATH=$PYTHONPATH:$(pwd)\
+python src/test_integration.py
+```
+
+
+
+
+
 ## Makefile targets for arm-jetson JP6 machines only
 
 This project includes a `Makefile` script to automate the PyInstaller build process for Jetson machines. Building and deploying the module for other platforms should be done through CI.
