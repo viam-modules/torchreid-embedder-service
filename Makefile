@@ -66,8 +66,7 @@ $(PYINSTALLER_DISTPATH)/main: setup
 
 module.tar.gz: $(PYINSTALLER_DISTPATH)/main
 	cp $(PYINSTALLER_DISTPATH)/main ./
-	cp $(MODULE_DIR)/bin/first_run.sh ./
-	tar -czvf module.tar.gz main meta.json first_run.sh
+	tar -czvf module.tar.gz main meta.json
 
 clean:
 	rm -rf $(BUILD)
