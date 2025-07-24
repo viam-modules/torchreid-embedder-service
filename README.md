@@ -7,7 +7,12 @@ An person embedder for features based person tracking
 This project includes a `Makefile` script to automate the PyInstaller build process for Jetson machines. Building and deploying the module for other platforms should be done through CI.
 PyInstaller is used to create standalone executables from the Python module scripts.
 
-####  `make setup-jp6`
+## Makefile targets for arm-jetson JP6 machines only
+
+This project includes a `Makefile` script to automate the PyInstaller build process for Jetson machines. Building and deploying the module for other platforms should be done through CI.
+PyInstaller is used to create standalone executables from the Python module scripts.
+
+####  1. `make setup-jp6`
 
 1. installs system dependencies (cuDNN and cuSPARSELt)
 2. creates venv environment (under `./build/.venv`)
@@ -15,25 +20,15 @@ PyInstaller is used to create standalone executables from the Python module scri
 
 Cleaned with `make clean` (this also deletes pyinstaller build directory)
 
-#### `make pyinstaller`
-This command builds the module executable using PyInstaller.
+#### 2.  `make module.tar.gz`
+This command builds the module executable using PyInstaller and creates a `.tar` file with the files needed to run the module.
+The PyInstaller executable is created under `./build/pyinstaller_dist`.
 
-This creates the PyInstaller executable under `./build/pyinstaller_dist`.
-To upload to viam registry:
-
-First copy `./build/pyinstaller_dist/main` in the `camera-object-tracking-service` repository.
-
-```bash
-cd camera-object-tracking-service
-cp ./build/pyinstaller_dist/main ./
-```
-
-Compress and upload to the registry:
+#### 3. Upload to the registry with the right tag
 
 ```bash
 viam login
-tar -czvf archive.tar.gz meta.json main first_run.sh  #needs to be on the same level
 viam module upload --version 0.0.0-rc0 --platform linux/arm64 --tags 'jetpack:6' archive.tar.gz
 ```
 
-Cleaned with `make clean-pyinstaller`
+Cleaned with `make clean`
