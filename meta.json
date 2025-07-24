@@ -1,0 +1,25 @@
+{
+  "$schema": "https://dl.viam.dev/module.schema.json",
+  "module_id": "viam:torchreid-embedder-service",
+  "visibility": "public",
+  "url": "https://github.com/viam-modules/torchreid-embedder-service",
+  "description": "A Viam ML Model service module to embed person images/detections using a pre-trained model.",
+  "models": [
+    {
+      "api": "rdk:service:mlmodel",
+      "model": "viam:mlmodel:torchreid-embedder-service"
+    }
+  ],
+  "build": {
+    "setup": "",
+    "build": "make module.tar.gz",
+    "arch": [
+      "linux/amd64",
+      "linux/arm64",
+      "darwin/arm64"
+    ]
+  },
+  "applications": null,
+  "entrypoint": "main",
+  "first_run": "first_run.sh"
+}
