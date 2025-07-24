@@ -4,3 +4,4 @@ torchvision
 pytest
 pytest-asyncio
 viam-sdk==0.48.0
+pyinstaller
