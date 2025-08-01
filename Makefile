@@ -39,7 +39,7 @@ pytorch-wheel: $(BUILD)/$(PYTORCH_WHEEL)
 
 $(BUILD)/$(TORCHVISION_WHEEL): $(VENV_DIR) $(BUILD)/$(PYTORCH_WHEEL)
 	@echo "Installing dependencies for TorchVision"
-	bin/first_run.sh
+	bin/first_run_jp6.sh
 	bin/install_cusparselt.sh
 
 	$(PYTHON) -m pip install --upgrade pip
@@ -66,7 +66,8 @@ $(PYINSTALLER_DISTPATH)/main: setup
 
 module.tar.gz: $(PYINSTALLER_DISTPATH)/main
 	cp $(PYINSTALLER_DISTPATH)/main ./
-	tar -czvf module.tar.gz main meta.json
+	cp bin/first_run_jp6.sh ./
+	tar -czvf module.tar.gz main meta.json first_run_jp6.sh
 
 clean:
 	rm -rf $(BUILD)
