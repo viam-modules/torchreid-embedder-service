@@ -84,9 +84,7 @@ class PersonEmbedderService(MLModel, Reconfigurable):
 
         # Extract the cropped image from input tensors
         cropped_image = input_tensors["input"]
-        uint8_tensor = (
-            torch.from_numpy(cropped_image).permute(2, 0, 1).contiguous()
-        )  # -> to (C, H, W)
+        uint8_tensor = torch.from_numpy(cropped_image).contiguous()  # -> to (C, H, W)
         float32_tensor = uint8_tensor.to(dtype=torch.float32)
         # Ensure the tensor is on the correct device (CPU/GPU)
         if hasattr(self.embedder, "device"):

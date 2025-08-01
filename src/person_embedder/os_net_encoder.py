@@ -67,7 +67,7 @@ class OSNetFeatureEmbedder:
         preprocessed_image = self.preprocess(padded_image)
         with torch.no_grad():
             res = self.model(preprocessed_image)
-        return res
+        return res[0]
 
     # TODO: implement compute_features when the tracker is able to ask for batched inference
     #  def compute_features(
