@@ -43,19 +43,21 @@ This creates the PyInstaller executable under `./build/pyinstaller_dist`.
 
 #### 3. Upload to viam registry:
 
-First copy `./build/pyinstaller_dist/main` and `./bin/first_run.sh` in the `camera-object-tracking-service` repository:
-
-```bash
-cd camera-object-tracking-service
-cp ./bin/first_run.sh ./
-cp ./build/pyinstaller_dist/main ./
+Edit  `first_run` field in `meta.json` file
+```
+"first_run": "first_run_jp6.sh"
 ```
 
-Compress and upload to the registry:
+
+Compress the module with the updated `meta.json` and `first_run_jp6.sh` using:
+```bash
+make module.tar.gz
+```
+
+and upload to the registry:
 
 ```bash
 viam login
-tar -czvf module.tar.gz meta.json main first_run.sh  #needs to be on the same level
 viam module upload --version 0.0.0-rc0 --platform linux/arm64 --tags 'jetpack:6' module.tar.gz
 ```
 
