@@ -61,7 +61,14 @@ class PersonEmbedderService(MLModel, Reconfigurable):
     def reconfigure(
         self, config: ServiceConfig, dependencies: Mapping[ResourceName, ResourceBase]
     ):
-        self.embedder = OSNetFeatureEmbedder()
+        model_path = config.attributes.fields.get("model_path", None)
+        if model_path is not None:
+            if not hasattr(model_path, "string_value"):
+                raise ValueError("model_path must be a string")
+            model_path = model_path.string_value
+        else:
+            model_path = None
+        self.embedder = OSNetFeatureEmbedder(model_path)
         return
 
     async def infer(

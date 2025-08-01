@@ -2,6 +2,15 @@
 An person embedder for features based person tracking
 
 
+## Configure your `torchreid-embedder-service` vision service
+
+```json
+{
+  "model_path": "/path/to/your/model"
+}
+```
+
+
 ## Run test
 
 ```bash
