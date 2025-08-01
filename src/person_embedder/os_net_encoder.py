@@ -24,7 +24,7 @@ OSNET_REPO = "osnet"
 
 
 class OSNetFeatureEmbedder:
-    def __init__(self):
+    def __init__(self, model_path: str = None):
         """
         Initialize the FeatureEncoder with a feature extractor model.
 
@@ -44,7 +44,13 @@ class OSNetFeatureEmbedder:
             num_classes=1000, loss="softmax", pretrained=False, use_gpu=use_gpu
         )
         model.eval()
-        model_path = resource_path(os.path.join(OSNET_REPO, "osnet_ain_ms_d_c.pth.tar"))
+        if model_path is None:
+            LOGGER.info("No model path provided, using default model")
+            model_path = resource_path(
+                os.path.join(OSNET_REPO, "osnet_ain_ms_d_c.pth.tar")
+            )
+        else:
+            LOGGER.info(f"Using model path: {model_path}")
         load_pretrained_weights(model, model_path)
         self.model = model.to(self.device)
 
