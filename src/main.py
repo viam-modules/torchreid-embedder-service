@@ -4,7 +4,6 @@ import asyncio
 from viam.module.module import Module
 from viam.resource.registry import Registry, ResourceCreatorRegistration
 from viam.services.mlmodel import MLModel
-from viam.services.vision import Vision
 
 from src.person_embedder_service import PersonEmbedderService
 
