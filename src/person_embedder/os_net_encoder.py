@@ -3,9 +3,7 @@ import os.path as osp
 import pickle
 from collections import OrderedDict
 from functools import partial
-from typing import Dict, List
 
-import numpy as np
 import torch
 import torchvision.transforms as T
 from viam.logging import getLogger
